@@ -93,18 +93,18 @@
   };
 </script>
 
-  <meta name="description" content="Hexo 使用经验添加标签页面输入下面命令，新建一个“标签”页面 1hexo new page tags  然后打开主题文件夹下（我的是next）的 _config.yml 文件,查找“menu”。 123456789menu:  home: / || home  #about: /about/ || user  #tags: /tags/ || tags  #categories: /categ">
+  <meta name="description" content="Hexo 使用经验添加标签页面输入下面命令，新建一个“标签”页面 1hexo new page tags 然后打开主题文件夹下（我的是next）的 _config.yml 文件,查找“menu”。 123456789menu:  home: / || home  #about: /about/ || user  #tags: /tags/ || tags  #categories: /catego">
 <meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="My first article">
 <meta property="og:url" content="http://tanyingkongxin.github.io/2019/08/02/My-first-article/index.html">
 <meta property="og:site_name" content="_(:з」∠)_">
-<meta property="og:description" content="Hexo 使用经验添加标签页面输入下面命令，新建一个“标签”页面 1hexo new page tags  然后打开主题文件夹下（我的是next）的 _config.yml 文件,查找“menu”。 123456789menu:  home: / || home  #about: /about/ || user  #tags: /tags/ || tags  #categories: /categ">
+<meta property="og:description" content="Hexo 使用经验添加标签页面输入下面命令，新建一个“标签”页面 1hexo new page tags 然后打开主题文件夹下（我的是next）的 _config.yml 文件,查找“menu”。 123456789menu:  home: / || home  #about: /about/ || user  #tags: /tags/ || tags  #categories: /catego">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-02T14:52:13.798Z">
+<meta property="og:updated_time" content="2019-08-02T15:11:20.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="My first article">
-<meta name="twitter:description" content="Hexo 使用经验添加标签页面输入下面命令，新建一个“标签”页面 1hexo new page tags  然后打开主题文件夹下（我的是next）的 _config.yml 文件,查找“menu”。 123456789menu:  home: / || home  #about: /about/ || user  #tags: /tags/ || tags  #categories: /categ">
+<meta name="twitter:description" content="Hexo 使用经验添加标签页面输入下面命令，新建一个“标签”页面 1hexo new page tags 然后打开主题文件夹下（我的是next）的 _config.yml 文件,查找“menu”。 123456789menu:  home: / || home  #about: /about/ || user  #tags: /tags/ || tags  #categories: /catego">
 
 
 
@@ -341,7 +341,7 @@
                 
               
 
-              <time title="创建时间：2019-08-02 00:00:00 / 修改时间：22:52:13" itemprop="dateCreated datePublished" datetime="2019-08-02T00:00:00+08:00">2019-08-02</time>
+              <time title="创建时间：2019-08-02 00:00:00 / 修改时间：23:11:20" itemprop="dateCreated datePublished" datetime="2019-08-02T00:00:00+08:00">2019-08-02</time>
             </span>
           
 
@@ -387,10 +387,8 @@
       
         <h1 id="Hexo-使用经验"><a href="#Hexo-使用经验" class="headerlink" title="Hexo 使用经验"></a>Hexo 使用经验</h1><h3 id="添加标签页面"><a href="#添加标签页面" class="headerlink" title="添加标签页面"></a>添加标签页面</h3><p>输入下面命令，新建一个“标签”页面</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
-
 <p>然后打开主题文件夹下（我的是next）的 _config.yml 文件,查找“menu”。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home</span><br><span class="line">  #about: /about/ || user</span><br><span class="line">  #tags: /tags/ || tags</span><br><span class="line">  #categories: /categories/ || th</span><br><span class="line">  archives: /archives/ || archive</span><br><span class="line">  #schedule: /schedule/ || calendar</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap</span><br><span class="line">  #commonweal: /404/ || heartbeat</span><br></pre></td></tr></table></figure>
-
 <p>代码取消注释（即删去”#”），即可在增加菜单<br>底下代码是一篇包含 标签 文章的例子：</p>
 <p>title: 标签测试<br>tags:</p>
 <ul>
@@ -399,28 +397,20 @@
 </ul>
 <h2 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h2><p><strong>创建一篇新文章</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
 <p>默认layout = post，可以支持自己定义。<br><strong>layout</strong>: 有post，page，draft三种，不同的类型会保存在不同的文件路径下。</p>
 <p><strong>草稿Drafts</strong><br>保存在 <em>source/_drafts</em> 文件夹，可以用下面publish指令移动draft 到<em>source/_post</em>文件夹下。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
 <h2 id="发博客"><a href="#发博客" class="headerlink" title="发博客"></a>发博客</h2><p><strong>本地预览博客</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br><span class="line">或者输入</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
 <p>之后会告诉你一个本地端口</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
-
 <p>在浏览器中输入上述的地址即可预览自己的博客，输入Ctrl + C离开。</p>
 <p><strong>博客部署到github</strong></p>
 <p>在 Git Shell 中进入 Hexo 文件夹，执行下面几条命令，将博客部署到 GitHub 上</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-
 <h1 id="Next-主题"><a href="#Next-主题" class="headerlink" title="Next 主题"></a>Next 主题</h1><p>参考来源: <a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">NexT帮助文档</a><br><strong>站点配置文件</strong>指的是站点根目录下的_config.yml文件，而<strong>主题配置文件</strong>则位于next文件夹下，由主题作者提供，主要用于配置主题相关的选项。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-<h2 id="启动主题"><a href="#启动主题" class="headerlink" title="启动主题"></a>启动主题</h2><p>要修改<strong>站点配置文件</strong>_config.yml，设置默认主题为next</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line">## Plugins: https://hexo.io/plugins/</span><br><span class="line">## Themes: https://hexo.io/themes/</span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure>
-
+<h2 id="启动主题"><a href="#启动主题" class="headerlink" title="启动主题"></a>启动主题</h2><p>要修改<strong>站点配置文件</strong>_config.yml，设置默认主题为next<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line">## Plugins: https://hexo.io/plugins/</span><br><span class="line">## Themes: https://hexo.io/themes/</span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure></p>
 <p>在切换主题之后，最好使用<em>hexo clean</em> 来清楚Hexo的缓存。</p>
 <h2 id="主题设定"><a href="#主题设定" class="headerlink" title="主题设定"></a>主题设定</h2><p><strong>选择Scheme</strong></p>
 <blockquote>
@@ -434,6 +424,20 @@
 </blockquote>
 <p><strong>设置语言</strong><br>编辑<strong>站点配置文件</strong>，修改配置为language: zh-Hans，即可选择简体中文。</p>
 <p><strong>设置菜单</strong></p>
+<p>…</p>
+<h3 id="文章显示数学公式"><a href="#文章显示数学公式" class="headerlink" title="文章显示数学公式"></a>文章显示数学公式</h3><h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>更换 Hexo 的 markdown 渲染引擎，hexo-renderer-kramed 引擎是在默认的渲染引擎 hexo-renderer-marked 的基础上修改了一些 bug ，两者比较接近，也比较轻量级。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">uninstall</span> hexo-renderer-marked <span class="comment">--save</span></span><br><span class="line">npm <span class="keyword">install</span> hexo-renderer-kramed <span class="comment">--save1212</span></span><br></pre></td></tr></table></figure>
+<p>执行上面的命令即可，先卸载原来的渲染引擎，再安装新的。<br>然后，跟换引擎后行间公式可以正确渲染了，但是这样还没有完全解决问题，行内公式的渲染还是有问题，因为 hexo-renderer-kramed 引擎也有语义冲突的问题。接下来到博客根目录下，找到node_modules\kramed\lib\rules\inline.js，把第11行的 escape 变量的值做相应的修改：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//escape: /^\\([<span class="string">\\`*&#123;&#125;\[\</span>](<span class="link"></span>)#$+\-.!_&gt;])/,</span><br><span class="line">escape: /^\\([<span class="string">`*\[\</span>](<span class="link"></span>)#$+\-.!_&gt;])/,1212</span><br></pre></td></tr></table></figure>
+<p>这一步是在原基础上取消了对\,{,}的转义(escape)。<br>同时把第20行的em变量也要做相应的修改。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//em: /^\b<span class="emphasis">_((?:_</span><span class="emphasis">_|[\s\S])+?)_</span>\b|^\<span class="emphasis">*((?:\*</span>\<span class="emphasis">*|[\s\S])+?)\*</span>(?!\*)/,</span><br><span class="line">em: /^\<span class="emphasis">*((?:\*</span>\<span class="emphasis">*|[\s\S])+?)\*</span>(?!\*)/,1212</span><br></pre></td></tr></table></figure>
+<p>重新启动hexo（先clean再generate）,问题完美解决。哦，如果不幸还没解决的话，看看是不是还需要在使用的主题中配置mathjax开关。</p>
+<h5 id="在-Next-主题中开启-MathJax-开关"><a href="#在-Next-主题中开启-MathJax-开关" class="headerlink" title="在 Next 主题中开启 MathJax 开关"></a>在 Next 主题中开启 MathJax 开关</h5><p>如何使用了主题了，别忘了在主题（Theme）中开启 MathJax 开关，下面以 next 主题为例，介绍下如何打开 MathJax 开关。</p>
+<p>进入到主题目录，找到 _config.yml 配置问题，把 math 默认的 false 修改为true，具体如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Math Equations Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Default(true) will load mathjax/katex script on demand</span></span><br><span class="line">  <span class="comment"># That is it only render those page who has 'mathjax: true' in Front Matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax/katex srcipt EVERY PAGE.</span></span><br><span class="line"><span class="attr">  per_page:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  engine:</span> <span class="string">mathjax</span></span><br><span class="line">  <span class="comment">#engine: katex12345678910111234567891011</span></span><br></pre></td></tr></table></figure>
+<p>还需要在文章的Front-matter里打开mathjax开关，如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">index.html</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="bullet">-07</span><span class="bullet">-05</span> <span class="number">12</span><span class="string">:01:30</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">-123456123456</span></span><br></pre></td></tr></table></figure>
+<p>之所以要在文章头里设置开关，是因为考虑只有在用到公式的页面才加载 Mathjax，这样不需要渲染数学公式的页面的访问速度就不会受到影响了。</p>
 <p><strong>Thank you for your reading!</strong> </p>
 
       
@@ -487,6 +491,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/tanyingkongxin.github.io/2019/08/02/模拟退火算法/" rel="prev" title="模拟退火算法">
+                模拟退火算法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -558,7 +566,7 @@
         
           <a href="/tanyingkongxin.github.io/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -571,13 +579,19 @@
       
       <div class="site-state-item site-state-tags">
         
+          
+            <a href="/tanyingkongxin.github.io/tags/">
+          
+        
         
         
           
         
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">标签</span>
+          
         
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
       </div>
     
   </nav>
@@ -610,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-使用经验"><span class="nav-number">1.</span> <span class="nav-text">Hexo 使用经验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加标签页面"><span class="nav-number">1.0.1.</span> <span class="nav-text">添加标签页面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Writing"><span class="nav-number">1.1.</span> <span class="nav-text">Writing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发博客"><span class="nav-number">1.2.</span> <span class="nav-text">发博客</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Next-主题"><span class="nav-number">2.</span> <span class="nav-text">Next 主题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动主题"><span class="nav-number">2.2.</span> <span class="nav-text">启动主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题设定"><span class="nav-number">2.3.</span> <span class="nav-text">主题设定</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-使用经验"><span class="nav-number">1.</span> <span class="nav-text">Hexo 使用经验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加标签页面"><span class="nav-number">1.0.1.</span> <span class="nav-text">添加标签页面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Writing"><span class="nav-number">1.1.</span> <span class="nav-text">Writing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发博客"><span class="nav-number">1.2.</span> <span class="nav-text">发博客</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Next-主题"><span class="nav-number">2.</span> <span class="nav-text">Next 主题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动主题"><span class="nav-number">2.2.</span> <span class="nav-text">启动主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题设定"><span class="nav-number">2.3.</span> <span class="nav-text">主题设定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文章显示数学公式"><span class="nav-number">2.3.1.</span> <span class="nav-text">文章显示数学公式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方法"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在-Next-主题中开启-MathJax-开关"><span class="nav-number">2.3.1.1.1.</span> <span class="nav-text">在 Next 主题中开启 MathJax 开关</span></a></li></ol></li></ol></li></ol></li></ol></li></div>
             
 
           </div>
@@ -773,6 +787,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
 

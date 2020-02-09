@@ -61,7 +61,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://tanyingkongxin.github.io/tanyingkongxin.github.io/2020/02/09/基于PCA的人脸识别%20--%20以ORL人脸数据库为例/pca.png">
 <meta property="og:image" content="http://tanyingkongxin.github.io/tanyingkongxin.github.io/2020/02/09/基于PCA的人脸识别%20--%20以ORL人脸数据库为例/result.png">
-<meta property="og:updated_time" content="2020-02-09T12:24:59.994Z">
+<meta property="og:updated_time" content="2020-02-09T12:57:37.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于PCA的人脸识别 -- 以ORL人脸数据库为例">
 <meta name="twitter:description" content="问题描述人脸识别简单来说就是给定一张人脸图像，识别出图像中的脸是谁的脸。在这篇文章中我们稍微具体化问题：给定已有数据库的人脸图像，并给出一张新的测试图像，要求能识别出测试图像的人脸是数据库中哪个个体的。">
@@ -215,7 +215,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-02-09 15:56:03 / 修改时间：20:24:59" itemprop="dateCreated datePublished" datetime="2020-02-09T15:56:03+08:00">2020-02-09</time>
+              <time title="创建时间：2020-02-09 15:56:03 / 修改时间：20:57:37" itemprop="dateCreated datePublished" datetime="2020-02-09T15:56:03+08:00">2020-02-09</time>
             </span>
 
           
@@ -301,7 +301,7 @@ V = \frac 1{N-1}XW \quad N是训练图像的数量，N\in R,</script></li>
 \alpha_{ik} = \hat V_k^T \overline x_i</script></li>
 </ul>
 <h1 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h1><p>下面我们以剑桥大学的ORL人脸数据库为例，使用matlab工具来进行实验。</p>
-<p>ORL人脸数据 ，包含40个人的400张人脸图像（每人对应10张），图像为92x112灰度图像（256灰度级）。由于官网的链接挂了，所以这里提供一个链接下载数据：==待补充内容==。</p>
+<p>ORL人脸数据 ，包含40个人的400张人脸图像（每人对应10张），图像为92x112灰度图像（256灰度级）。由于官网的链接挂了，所以这里提供一个链接下载数据：<a href="https://github.com/tanyingkongxin/tanyingkongxin.github.io/blob/master/2020/02/09/%E5%9F%BA%E4%BA%8EPCA%E7%9A%84%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB%20--%20%E4%BB%A5ORL%E4%BA%BA%E8%84%B8%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BA%E4%BE%8B/ORL_faces.zip。" target="_blank" rel="noopener">https://github.com/tanyingkongxin/tanyingkongxin.github.io/blob/master/2020/02/09/%E5%9F%BA%E4%BA%8EPCA%E7%9A%84%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB%20--%20%E4%BB%A5ORL%E4%BA%BA%E8%84%B8%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BA%E4%BE%8B/ORL_faces.zip。</a></p>
 <hr>
 <p>总体介绍一下算法思路:</p>
 <ul>

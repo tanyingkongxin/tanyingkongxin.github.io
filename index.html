@@ -200,7 +200,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/tanyingkongxin.github.io/2020/02/09/基于PCA的人脸识别/" class="post-title-link" itemprop="url">基于PCA的人脸识别</a>
+            <a href="/tanyingkongxin.github.io/2020/02/09/基于PCA的人脸识别/" class="post-title-link" itemprop="url">基于PCA的人脸识别 -- 以ORL人脸数据库为例</a>
         </h1>
 
         <div class="post-meta">
@@ -211,7 +211,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-02-09 15:56:03 / 修改时间：16:13:24" itemprop="dateCreated datePublished" datetime="2020-02-09T15:56:03+08:00">2020-02-09</time>
+              <time title="创建时间：2020-02-09 15:56:03 / 修改时间：20:16:41" itemprop="dateCreated datePublished" datetime="2020-02-09T15:56:03+08:00">2020-02-09</time>
             </span>
 
           
@@ -226,9 +226,6 @@
 
       
           <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>人脸识别简单来说就是给定一张人脸图像，识别出图像中的脸是谁的脸。在这篇文章中我们稍微具体化问题：给定已有数据库的人脸图像，并给出一张新的测试图像，要求能识别出测试图像的人脸是数据库中哪个个体的。</p>
-<h1 id="人脸识别"><a href="#人脸识别" class="headerlink" title="人脸识别"></a>人脸识别</h1><p>在现实世界中进行人脸识别，我们会遇到不小的挑战。因为人脸数据其实多种多样，同一个人的人脸图像可以有头部姿势、表情、装饰的遮掩（眼睛，帽子…）、光照环境甚至是年龄健康状况等。所以我们直接把测试图像和数据库中的每一个图像来比较每一个像素，选出均方误差最小的那一张图像，其实是很不现实的。思考一下，我们人是如何识别人脸的。我想，在我们看到一张人脸的时候，目光会锁定那些典型的生物特征（眼睛、鼻子、头发…），然后大脑会快速在记忆的数据库中检索，寻找出匹配度最高的人脸图像，由此识别出人脸。所以<strong>根据人脸的生物特征</strong>，是人脸识别的一个思路。当然我们很容易想到这种方法的一个缺点——鲁棒性不够，这种方法需要在图像中识别出人的眼睛、耳朵等的位置范围，比较依赖特定的图像，在人脸发生变化时这种方法的效果会明显下降。</p>
-<p>因此这里介绍另外一种思路：<strong>利用统计学方法在整体上提取特征</strong>。PCA算法主要选取特征值（eigenvalue）作为特征。这种基于特征值的人脸识别方法也被称为特征脸（Eigenface）。</p>
-<p>（相信大家在线性代数等课程中有学过特征值、特征向量，如果忘记特征值的概念，建议百度迅速补充一下基础知识: )</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/tanyingkongxin.github.io/2020/02/09/基于PCA的人脸识别/#more" rel="contents">

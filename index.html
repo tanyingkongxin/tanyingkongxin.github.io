@@ -1,95 +1,53 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/tanyingkongxin.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/tanyingkongxin.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/tanyingkongxin.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/tanyingkongxin.github.io/images/logo.svg" color="#222">
+  <link rel="alternate" href="/tanyingkongxin.github.io/atom.xml" title="_(:з」∠)_" type="application/atom+xml">
+
+<link rel="stylesheet" href="/tanyingkongxin.github.io/css/main.css">
 
 
+<link rel="stylesheet" href="/tanyingkongxin.github.io/lib/font-awesome/css/font-awesome.min.css">
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/tanyingkongxin.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
-<link rel="stylesheet" href="/tanyingkongxin.github.io/css/main.css?v=7.2.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/tanyingkongxin.github.io/images/apple-touch-icon-next.png?v=7.2.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/tanyingkongxin.github.io/images/favicon-32x32-next.png?v=7.2.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/tanyingkongxin.github.io/images/favicon-16x16-next.png?v=7.2.0">
-
-
-  <link rel="mask-icon" href="/tanyingkongxin.github.io/images/logo.svg?v=7.2.0" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/tanyingkongxin.github.io/',
     scheme: 'Pisces',
-    version: '7.2.0',
+    version: '7.5.0',
+    exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
-    fastclick: false,
+    mediumzoom: false,
     lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    pangu: false,
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
       copy_failure: '复制失败'
-    }
+    },
+    sidebarPadding: 40
   };
 </script>
 
@@ -104,23 +62,20 @@
 <meta name="twitter:title" content="_(:з」∠)_">
 <meta name="twitter:description" content="Nice to meet you!">
 
+<link rel="canonical" href="http://tanyingkongxin.github.io/">
 
 
-
-
-  
-  
-  <link rel="canonical" href="http://tanyingkongxin.github.io/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
   };
 </script>
 
-  
   <title>_(:з」∠)_</title>
   
 
@@ -129,15 +84,8 @@
 
 
 
-
-
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -146,9 +94,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -162,230 +109,190 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
-    
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/tanyingkongxin.github.io/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">_(:з」∠)_</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
-    
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-      
-    
-
-    
-
-    <a href="/tanyingkongxin.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/tanyingkongxin.github.io/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-      
-    
-
-    
-
-    <a href="/tanyingkongxin.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tanyingkongxin.github.io/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-      
-    
-
-    
-
-    <a href="/tanyingkongxin.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/tanyingkongxin.github.io/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
 
   </li>
+        <li class="menu-item menu-item-archives">
 
-      
-      
-    </ul>
-  
+    <a href="/tanyingkongxin.github.io/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
-  
+  </li>
+  </ul>
 
-  
 </nav>
-
-
-
 </div>
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
+
+          <div class="content">
             
 
-          
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
+  <div class="posts-expand">
+        
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tanyingkongxin.github.io/tanyingkongxin.github.io/2019/08/02/模拟退火算法/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tanyingkongxin.github.io/tanyingkongxin.github.io/2020/02/09/基于PCA的人脸识别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/tanyingkongxin.github.io/images/avatar.jpg">
       <meta itemprop="name" content="Wangxr">
       <meta itemprop="description" content="Nice to meet you!">
-      <meta itemprop="image" content="/tanyingkongxin.github.io/images/NiceToMeetYou.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="_(:з」∠)_">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/tanyingkongxin.github.io/2019/08/02/模拟退火算法/" class="post-title-link" itemprop="url">模拟退火算法</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/tanyingkongxin.github.io/2020/02/09/基于PCA的人脸识别/" class="post-title-link" itemprop="url">基于PCA的人脸识别</a>
+        </h1>
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">发表于</span>
               
 
-              
-                
-              
+              <time title="创建时间：2020-02-09 15:56:03 / 修改时间：16:13:24" itemprop="dateCreated datePublished" datetime="2020-02-09T15:56:03+08:00">2020-02-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>人脸识别简单来说就是给定一张人脸图像，识别出图像中的脸是谁的脸。在这篇文章中我们稍微具体化问题：给定已有数据库的人脸图像，并给出一张新的测试图像，要求能识别出测试图像的人脸是数据库中哪个个体的。</p>
+<h1 id="人脸识别"><a href="#人脸识别" class="headerlink" title="人脸识别"></a>人脸识别</h1><p>在现实世界中进行人脸识别，我们会遇到不小的挑战。因为人脸数据其实多种多样，同一个人的人脸图像可以有头部姿势、表情、装饰的遮掩（眼睛，帽子…）、光照环境甚至是年龄健康状况等。所以我们直接把测试图像和数据库中的每一个图像来比较每一个像素，选出均方误差最小的那一张图像，其实是很不现实的。思考一下，我们人是如何识别人脸的。我想，在我们看到一张人脸的时候，目光会锁定那些典型的生物特征（眼睛、鼻子、头发…），然后大脑会快速在记忆的数据库中检索，寻找出匹配度最高的人脸图像，由此识别出人脸。所以<strong>根据人脸的生物特征</strong>，是人脸识别的一个思路。当然我们很容易想到这种方法的一个缺点——鲁棒性不够，这种方法需要在图像中识别出人的眼睛、耳朵等的位置范围，比较依赖特定的图像，在人脸发生变化时这种方法的效果会明显下降。</p>
+<p>因此这里介绍另外一种思路：<strong>利用统计学方法在整体上提取特征</strong>。PCA算法主要选取特征值（eigenvalue）作为特征。这种基于特征值的人脸识别方法也被称为特征脸（Eigenface）。</p>
+<p>（相信大家在线性代数等课程中有学过特征值、特征向量，如果忘记特征值的概念，建议百度迅速补充一下基础知识: )</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/tanyingkongxin.github.io/2020/02/09/基于PCA的人脸识别/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tanyingkongxin.github.io/tanyingkongxin.github.io/2019/08/02/模拟退火算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/tanyingkongxin.github.io/images/avatar.jpg">
+      <meta itemprop="name" content="Wangxr">
+      <meta itemprop="description" content="Nice to meet you!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="_(:з」∠)_">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/tanyingkongxin.github.io/2019/08/02/模拟退火算法/" class="post-title-link" itemprop="url">模拟退火算法</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2019-08-02 22:59:07" itemprop="dateCreated datePublished" datetime="2019-08-02T22:59:07+08:00">2019-08-02</time>
             </span>
-          
-
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-03 00:10:38" itemprop="dateModified" datetime="2019-08-03T00:10:38+08:00">2019-08-03</time>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-08 21:02:20" itemprop="dateModified" datetime="2019-11-08T21:02:20+08:00">2019-11-08</time>
               </span>
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -393,515 +300,71 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h1 id="模拟退火-simulated-anneal"><a href="#模拟退火-simulated-anneal" class="headerlink" title="模拟退火 simulated anneal"></a>模拟退火 simulated anneal</h1><h2 id="1-算法简介"><a href="#1-算法简介" class="headerlink" title="1. 算法简介"></a>1. 算法简介</h2><p>模拟退火算法得益于材料的统计力学的研究成果。统计力学表明材料中粒子的不 同结构对应于粒子的不同能量水平。在高温条件下，粒子的能量较高，可以自由运动和重新排列。在低温条件下，粒子能量较低。如果从高温开始，非常缓慢地降温（这个过程被称为退火），粒子就可以在每个温度下达到热平衡。当系统完全被冷却时，最终形成处于低能状态的晶体。 </p>
-<p>如果用粒子的能量定义材料的状态，Metropolis 算法用一个简单的数学模型描述了 退火过程。假设材料在状态<em>i</em> 之下的能量为 <em>E</em>(<em>i</em>) ，那么材料在温度<em>T</em> 时从状态<em>i</em> 进入状态 <em>j</em> 就遵循如下规律： </p>
-<p>（1）如果 <em>E</em>( <em>j</em>) ≤ <em>E</em>(<em>i</em>) ，接受该状态被转换。 </p>
-<p>（2）如果 <em>E</em>( <em>j</em>) &gt; <em>E</em>(<em>i</em>) ，则状态转换以如下概率被接受： </p>
-<script type="math/tex; mode=display">
-exp({\frac{E(i) - E(j)}{KT}})</script><p>其中 <em>K</em> 是物理学中的波尔兹曼常数，<em>T</em> 是材料温度。 </p>
-<p>在某一个特定温度下，进行了充分的转换之后，材料将达到热平衡。这时材料处于状态<em>i</em> 的概率满足波尔兹曼分布： </p>
-<script type="math/tex; mode=display">
-P_T(x = i)=\frac{exp(-\frac{E(i)}{KT})}{\sum_{j\in S}exp(-\frac{E(i)}{KT})}</script><p>其中 <em>x</em> 表示材料当前状态的随机变量， <em>S</em> 表示状态空间集合。 </p>
-<p>显然 </p>
-<script type="math/tex; mode=display">
-\lim_{T \to \infty}\frac{exp(-\frac{E(i)}{KT})}{\sum_{j\in S}exp(-\frac{E(i)}{KT})}=\frac 1 {|S|}</script><p>其中| <em>S</em> | 表示集合 <em>S</em> 中状态的数量。这表明<strong>所有状态在高温下具有相同的概率</strong>。而当温度下降时，</p>
-<script type="math/tex; mode=display">
-\lim_{T \to 0}\frac{exp(-\frac{E(i)-E_{min}}{KT})}{\sum_{j\in S}exp(-\frac{E(i)-E_{min}}{KT})}=
-\lim_{T \to 0}\frac{exp(-\frac{E(i)-E_{min}}{KT})}{\sum_{j\in S_{min}}exp(-\frac{E(i)-E_{min}}{KT}) + \sum_{j\notin S_{min}}exp(-\frac{E(i)-E_{min}}{KT})}\\ 
-=\lim_{T \to 0}\frac{exp(-\frac{E(i)-E_{min}}{KT})}{\sum_{j\in S_{min}}exp(-\frac{E(i)-E_{min}}{KT})}=\left \{
-\begin{array}\
-\frac 1 {|S_{min}|} & 若i\in S_{min} \\
-0 & 其他
-\end{array}
-\right.</script><p>其中 $E_{\min}=\min_{j\in S}E(j)$且$S_{\min} = \{i|E(i) = E_{\min}\}$。 </p>
-<p>上式表明<strong>当温度降至很低时，材料会以很大概率进入最小能量状态</strong>。 </p>
-<p>假定我们要解决的问题是一个寻找最小值的优化问题。将物理学中模拟退火的思想应用于优化问题就可以得到模拟退火寻优方法。</p>
-<p>考虑这样一个组合优化问题：优化函数为 $f:x\to R^+$，其中$x\in S$ ，它表示优化问题的一个可行解，$R^+=\{y|y\in R,y&gt;0\}$,<em>S</em> 表示函数的定义域。<em>N</em>(<em>x</em>) ⊆ <em>S</em> 表示 <em>x</em> 的一个邻域集合。 </p>
-<p>首先给定一个初始温度<em>T</em>0 和该优化问题的一个初始解 <em>x</em>(0) ，并由 <em>x</em>(0) 生成下一个解 <em>x</em>‘∈ <em>N</em>(<em>x</em>(0)) ，是否接受 <em>x</em>‘ 作为一个新解 <em>x</em>(1) 依赖于下面概率： </p>
-<script type="math/tex; mode=display">
-P(x(0)\to x')=\left \{
-\begin{array}\
-1 & 若f(x')<f(x(0))\\
-exp(\frac{-f(x')-f(x(0))}{T_0}) & 其他
-\end{array}
-\right.</script><p>换句话说，如果生成的解 <em>x</em>‘ 的函数值比前一个解的函数值更小，则接受 <em>x</em>(1) = <em>x</em>‘ 作为一个新解。否则以概率 $exp(\frac{-f(x’)-f(x(0))}{T_0})$接受 <em>x</em>‘ 作为一个新解。 </p>
-<p>泛泛地说，对于某一个温度$T_i$ 和该优化问题的一个解 <em>x</em>(<em>k</em>) ，可以生成 <em>x</em>‘ 。接受 <em>x</em>‘ 作为下一个新解 <em>x</em>(<em>k</em> +1) 的概率为： </p>
-<script type="math/tex; mode=display">
-P(x(k)\to x')=\left \{
-\begin{array}\
-1 & 若f(x')<f(x(k))\\
-exp(\frac{-f(x')-f(x(k))}{T_0}) & 其他
-\end{array}
-\right.</script><p>在温度$T_i$ 下，经过很多次的转移之后，降低温度<em>$T_i$</em> ，得到$T_{i+1}&lt;T_i$。在$T_{i+1}$下重复上述过程。因此整个优化过程就是不断寻找新解和缓慢降温的交替过程。最终的解是对该问题寻优的结果。 </p>
-<p>我们注意到，在每个$T_i$下，所得到的一个新状态 <em>x</em>(<em>k</em> +1) 完全依赖于前一个状态 <em>x(k)</em> ，可以和前面的状态 <em>x(0), … , x(k −1)</em>无关，因此这是一个马尔可夫过程。使用马尔可夫过程对上述模拟退火的步骤进行分析，结果表明：从任何一个状态 <em>x</em>(<em>k</em>) 生成 <em>x</em>‘ 的概率，在 <em>N</em>(<em>x</em>(<em>k</em>)) 中是均匀分布的，且新状态 <em>x</em>‘ 被接受的概率满足上述式子，那么经过有限次的转换，在温度$T_i$ 下的平衡态$x_i$的分布由下式给出：</p>
-<script type="math/tex; mode=display">
-P_i(T_{i})=\frac{exp(-\frac{f(x_i)}T)}{\sum_{j\in S}exp(-\frac{f(x_i)}T)}</script><p>当温度<em>T</em> 降为 0 时，$x_i$ 的分布为： </p>
-<script type="math/tex; mode=display">
-P^*_i=\left\{
-\begin{array}\
-\frac{1}{|S_{min}|} & 若x_i\in S_{min}\\
-0 & 其他
-\end{array}
-\right.</script><p>并且$\sum_{x_i\in S_{min}}P_i^* =1$</p>
-<p>这说明如果温度下降十分缓慢，而在每个温度都有足够多次的状态转移，使之在每一个温度下达到热平衡，则全局最优解将以概率 1 被找到。因此可以说模拟退火算法可以找到全局最优解。 </p>
-<p><strong>在模拟退火算法中应注意以下问题</strong>： </p>
-<p>（1）理论上，降温过程要足够缓慢，要使得在每一温度下达到热平衡。但在计算 机实现中，如果降温速度过缓，所得到的解的性能会较为令人满意，但是算法会太慢，相对于简单的搜索算法不具有明显优势。如果降温速度过快，很可能最终得不到全局最优解。因此使用时要综合考虑解的性能和算法速度，在两者之间采取一种折衷。</p>
-<p>（2）要确定在每一温度下状态转换的结束准则。实际操作可以考虑当连续 <em>m</em> 次的 转换过程没有使状态发生变化时结束该温度下的状态转换。最终温度的确定可以提前定为一个较小的值$T_e$，或连续几个温度下转换过程没有使状态发生变化算法就结束。 </p>
-<p>（3）选择初始温度和确定某个可行解的邻域的方法也要恰当。</p>
-<h2 id="2-算法步骤"><a href="#2-算法步骤" class="headerlink" title="2. 算法步骤"></a>2. 算法步骤</h2><p>下面根据一个实例来展开介绍算法步骤。</p>
-<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>我方有一个基地，经度和纬度为（70,40）。假设我方飞机的速度为 1000 公里/小时。我方派一架飞机从基地出发，侦察完敌方所有目标，再返回原来的基地。在敌方每一目标点的侦察时间不计，求该架飞机所花费的时间（假设我方飞机巡航时间可以充分长）。</p>
-<p>注：敌方所有目标的坐标见文章末尾。 </p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>这是一个<strong>旅行商问题（TSP）</strong>。我们依次给基地编号为 1，敌方目标依次编号为 2，3，…，101，最后我方基地再重复编号为 102（这样便于程序中计算）。距离矩阵 $D=(d_{ij})_{102×102}$其中 $d_{ij}$表示表示<em>i</em>, <em>j</em> 两点的距离，<em>i</em>, <em>j</em> = 1,2,…,102 ，这里 <em>D</em> 为实对称矩阵。则问题是求一个从点 1 出发，走遍所有中间点，到达点 102 的一个最短路径。 </p>
-<p>上面问题中给定的是地理坐标（经度和纬度），我们必须求两点间的实际距离。设<em>A</em>, <em>B</em> 两点的地理坐标分别为$(x_1,y_1),(x_2,y_2)$，过<em>A</em>, <em>B</em> 两点的大圆的劣弧长即为两点的实际距离。以地心为坐标原点<em>O</em> ，以赤道平面为 <em>XOY</em> 平面，以 0 度经线圈所在的平面为 <em>XOZ</em> 平面建立三维直角坐标系。则 <em>A</em>, <em>B</em> 两点的直角坐标分别为： </p>
-<p>$A(R \cos x_1\cos y_1,R \sin x_1\cos y_1,R \sin y_1) \\B(R\cos x_2\cos y_2,R \sin x_2\cos y_2,R \sin y_2)$ </p>
-<p>其中 <em>R</em> = 6370为地球半径（单位km）。 </p>
-<p><em>A</em>, <em>B</em> 两点的实际距离</p>
-<script type="math/tex; mode=display">
-d = R\arccos(\frac{\vec {OA} \cdot \vec {OB}}{|\vec {OA}||\vec {OB}|})</script><p>化简得 </p>
-<p>$d = \arccos[\cos(x_1-x_2)\cos y_1\cos y_2+\sin y_1\sin y_2]$。 </p>
-<p>求解的模拟退火算法描述如下： </p>
-<p>（1）解空间 </p>
-<p>解空间 <em>S</em> 可表为{1,2,…,101,102 }的所有固定起点和终点的循环排列集合，即 $S=\{(\pi_1,…,\pi_{102}|\pi_1=1,(\pi_2,…,\pi_{100})为\{2,3,…,101\}的循环排列,\pi_{102} = 102 \}$其中每一个循环排列表示侦察 100 个目标的一个回路，$π_i = j$表示在第<em>i</em> −1次侦察目标 <em>j</em> ，初始解可选为(1,2,…,102) ，本文中我们先使用 Monte Carlo 方法求得一个较好的初始解。 </p>
-<p>（2）目标函数 </p>
-<p>此时的目标函数为侦察所有目标的路径长度或称代价函数。我们要求 </p>
-<script type="math/tex; mode=display">
-\min f(\pi_1,\pi_2,...,\pi_{102}) = \sum_{i=1}^{101}d_{\pi_i\pi_{i+1}}</script><p>而一次迭代由下列三步构成： </p>
-<p>（3）新解的产生 </p>
-<p>① 2 变换法 </p>
-<p>任选序号 <em>u</em>,<em>v</em> （<em>u</em> &lt; <em>v</em> ）交换<em>u</em> 与<em>v</em> 之间的顺序，此时的新路径为： </p>
-<p>$π_1 … π_{u−1} π_v π_{v−1} …π_{u+1} π_u π_{v+1} … π_{102}$</p>
-<p>② 3 变换法 </p>
-<p>任选序号 <em>u</em>,<em>v</em> 和 <em>w</em> ，将 <em>u</em> 和 <em>v</em> 之间的路径插到 <em>w</em> 之后，对应的新路径为（设 </p>
-<p><em>u</em> &lt; <em>v</em> &lt; <em>w</em> ） </p>
-<p>$π_1 … π_{u−1} π_{v+1} … π_w π_u … π_vπ_{w+1} … π_{102}$</p>
-<p>（4）代价函数差 </p>
-<p> 对于 2 变换法，路径差可表示为 </p>
-<p>$\triangle f=(d_{\pi_{u-1}\pi_v}+d_{\pi_u\pi_{v+1}})-(d_{\pi_{u-1}\pi_u}+d_{\pi_v\pi_{v+1}})$</p>
-<p>（5）接受准则 </p>
-<script type="math/tex; mode=display">
-p = \left\{
-\begin{array}\
-1 & \triangle f < 0 \\
-\exp(-\triangle  f/T) & \triangle f \ge0
-\end{array}
-\right.</script><p>如果Δ<em>f</em> &lt; 0 ，则接受新的路径。否则，以概率exp(−Δ<em>f</em> /<em>T</em>) 接受新的路径，即若exp(−Δ<em>f</em> /<em>T</em>) 大于 0 到 1 之间的随机数则接受。 </p>
-<p>（6）降温 </p>
-<p>利用选定的降温系数<em>α</em> 进行降温即： <em>T ←αT</em> ，得到新的温度，这里我们取 <em>α</em> = 0.999 。 </p>
-<p>（7）结束条件 </p>
-<p>用选定的终止温度 $e = 10^{-30}$，判断退火过程是否结束。若<em>T</em> &lt; <em>e</em> ，算法结束，输出 </p>
-<p>当前状态。 </p>
-<h3 id="Matlab代码"><a href="#Matlab代码" class="headerlink" title="Matlab代码"></a>Matlab代码</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%% 模拟退火算法求解一个TSP问题</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line">clc,clear </span><br><span class="line">data = xlsread(<span class="string">'data.xls'</span>); <span class="comment">%加载敌方 100 个目标的数据</span></span><br><span class="line">x=data(:,<span class="number">1</span>:<span class="number">2</span>:<span class="number">8</span>);x=x(:); </span><br><span class="line">y=data(:,<span class="number">2</span>:<span class="number">2</span>:<span class="number">8</span>);y=y(:); </span><br><span class="line">data=[x y]; d1=[<span class="number">70</span>,<span class="number">40</span>]; </span><br><span class="line">data=[d1;data;d1]; data=data*<span class="built_in">pi</span>/<span class="number">180</span>; </span><br><span class="line">d=<span class="built_in">zeros</span>(<span class="number">102</span>); <span class="comment">%距离矩阵 d </span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="number">101</span> </span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span>=<span class="built_in">i</span>+<span class="number">1</span>:<span class="number">102</span> </span><br><span class="line">        temp=<span class="built_in">cos</span>(data(<span class="built_in">i</span>,<span class="number">1</span>)-data(<span class="built_in">j</span>,<span class="number">1</span>))*<span class="built_in">cos</span>(data(<span class="built_in">i</span>,<span class="number">2</span>))*<span class="built_in">cos</span>(data(<span class="built_in">j</span>,<span class="number">2</span>))+<span class="built_in">sin</span>(data(<span class="built_in">i</span>,<span class="number">2</span>))*<span class="built_in">sin</span>(data(<span class="built_in">j</span>,<span class="number">2</span>)); </span><br><span class="line">        d(<span class="built_in">i</span>,<span class="built_in">j</span>)=<span class="number">6370</span>*<span class="built_in">acos</span>(temp); </span><br><span class="line">    <span class="keyword">end</span> </span><br><span class="line"><span class="keyword">end</span> </span><br><span class="line">d=d+d'; </span><br><span class="line"></span><br><span class="line"><span class="comment">%% 蒙特卡罗方法生成初始解</span></span><br><span class="line">S0=[];Sum=<span class="built_in">inf</span>; </span><br><span class="line"><span class="built_in">rand</span>(<span class="string">'state'</span>,sum(clock)); </span><br><span class="line"><span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:<span class="number">1000</span> </span><br><span class="line">    S=[<span class="number">1</span> <span class="number">1</span>+randperm(<span class="number">100</span>),<span class="number">102</span>]; </span><br><span class="line">    temp=<span class="number">0</span>; </span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="number">101</span> </span><br><span class="line">        temp=temp+d(S(<span class="built_in">i</span>),S(<span class="built_in">i</span>+<span class="number">1</span>)); </span><br><span class="line">    <span class="keyword">end</span> </span><br><span class="line">    <span class="keyword">if</span> temp&lt;Sum </span><br><span class="line">        S0=S;Sum=temp; </span><br><span class="line">    <span class="keyword">end</span> </span><br><span class="line"><span class="keyword">end</span> </span><br><span class="line">e=<span class="number">0.1</span>^<span class="number">30</span>; <span class="comment">%结束条件</span></span><br><span class="line">L=<span class="number">20000</span>; <span class="comment">%最大循环次数</span></span><br><span class="line">at=<span class="number">0.999</span>; <span class="comment">%降温系数</span></span><br><span class="line">T=<span class="number">1</span>; <span class="comment">%初始温度</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 退火过程</span></span><br><span class="line"><span class="keyword">for</span> k=<span class="number">1</span>:L</span><br><span class="line">    <span class="comment">%产生新解</span></span><br><span class="line">    c=<span class="number">2</span>+<span class="built_in">floor</span>(<span class="number">100</span>*<span class="built_in">rand</span>(<span class="number">1</span>,<span class="number">2</span>)); </span><br><span class="line">    c=<span class="built_in">sort</span>(c); </span><br><span class="line">    c1=c(<span class="number">1</span>);c2=c(<span class="number">2</span>); </span><br><span class="line">    <span class="comment">%计算代价函数值</span></span><br><span class="line">    df=d(S0(c1<span class="number">-1</span>),S0(c2))+d(S0(c1),S0(c2+<span class="number">1</span>))-d(S0(c1<span class="number">-1</span>),S0(c1))-d(S0(c2),S0(c2+<span class="number">1</span>)); </span><br><span class="line">    <span class="comment">%接受准则</span></span><br><span class="line">    <span class="keyword">if</span> df&lt;<span class="number">0</span> </span><br><span class="line">        S0=[S0(<span class="number">1</span>:c1<span class="number">-1</span>),S0(c2:<span class="number">-1</span>:c1),S0(c2+<span class="number">1</span>:<span class="number">102</span>)]; </span><br><span class="line">        Sum=Sum+df; </span><br><span class="line">    <span class="keyword">elseif</span> <span class="built_in">exp</span>(-df/T)&gt;<span class="built_in">rand</span>(<span class="number">1</span>) </span><br><span class="line">        S0=[S0(<span class="number">1</span>:c1<span class="number">-1</span>),S0(c2:<span class="number">-1</span>:c1),S0(c2+<span class="number">1</span>:<span class="number">102</span>)]; </span><br><span class="line">        Sum=Sum+df; </span><br><span class="line">    <span class="keyword">end</span> </span><br><span class="line">    T=T*at; </span><br><span class="line">    <span class="keyword">if</span> T&lt;e </span><br><span class="line">        <span class="keyword">break</span>; </span><br><span class="line">    <span class="keyword">end</span> </span><br><span class="line"><span class="keyword">end</span> </span><br><span class="line"><span class="comment">%% 输出巡航路径及路径长度</span></span><br><span class="line"><span class="built_in">disp</span>(<span class="string">'巡航路径为'</span>);</span><br><span class="line">S0</span><br><span class="line"><span class="built_in">disp</span>(<span class="string">'路径长度'</span>);</span><br><span class="line">Sum</span><br><span class="line"><span class="comment">% 画出轨迹图</span></span><br><span class="line">xx=[<span class="number">70</span>;x;<span class="number">70</span>];</span><br><span class="line">yy=[<span class="number">40</span>;y;<span class="number">40</span>];</span><br><span class="line">xx=xx(S0);</span><br><span class="line">yy=yy(S0);</span><br><span class="line"><span class="built_in">plot</span>(xx,yy,<span class="string">'Marker'</span>,<span class="string">'+'</span>)</span><br></pre></td></tr></table></figure>
-<p>运行结果在$4.4×10^4$km上下波动，所以飞机巡航时间大致为44小时。</p>
-<h3 id="补充：题目数据"><a href="#补充：题目数据" class="headerlink" title="补充：题目数据"></a>补充：题目数据</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>经度</th>
-<th>纬度</th>
-<th>经度</th>
-<th>纬度</th>
-<th>经度</th>
-<th>纬度</th>
-<th>经度</th>
-<th>纬度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>53.7121</td>
-<td>15.3046</td>
-<td>51.1758</td>
-<td>0.0322</td>
-<td>46.3253</td>
-<td>28.2753</td>
-<td>30.3313</td>
-<td>6.9348</td>
-</tr>
-<tr>
-<td>56.5432</td>
-<td>21.4188</td>
-<td>10.8198</td>
-<td>16.2529</td>
-<td>22.7891</td>
-<td>23.1045</td>
-<td>10.1584</td>
-<td>12.4819</td>
-</tr>
-<tr>
-<td>20.105</td>
-<td>15.4562</td>
-<td>1.9451</td>
-<td>0.2057</td>
-<td>26.4951</td>
-<td>22.1221</td>
-<td>31.4847</td>
-<td>8.964</td>
-</tr>
-<tr>
-<td>26.2418</td>
-<td>18.176</td>
-<td>44.0356</td>
-<td>13.5401</td>
-<td>28.9836</td>
-<td>25.9879</td>
-<td>38.4722</td>
-<td>20.1731</td>
-</tr>
-<tr>
-<td>28.2694</td>
-<td>29.0011</td>
-<td>32.191</td>
-<td>5.8699</td>
-<td>36.4863</td>
-<td>29.7284</td>
-<td>0.9718</td>
-<td>28.1477</td>
-</tr>
-<tr>
-<td>8.9586</td>
-<td>24.6635</td>
-<td>16.5618</td>
-<td>23.6143</td>
-<td>10.5597</td>
-<td>15.1178</td>
-<td>50.2111</td>
-<td>10.2944</td>
-</tr>
-<tr>
-<td>8.1519</td>
-<td>9.5325</td>
-<td>22.1075</td>
-<td>18.5569</td>
-<td>0.1215</td>
-<td>18.8726</td>
-<td>48.2077</td>
-<td>16.8889</td>
-</tr>
-<tr>
-<td>31.9499</td>
-<td>17.6309</td>
-<td>0.7732</td>
-<td>0.4656</td>
-<td>47.4134</td>
-<td>23.7783</td>
-<td>41.8671</td>
-<td>3.5667</td>
-</tr>
-<tr>
-<td>43.5474</td>
-<td>3.9061</td>
-<td>53.3524</td>
-<td>26.7256</td>
-<td>30.8165</td>
-<td>13.4595</td>
-<td>27.7133</td>
-<td>5.0706</td>
-</tr>
-<tr>
-<td>23.9222</td>
-<td>7.6306</td>
-<td>51.9612</td>
-<td>22.8511</td>
-<td>12.7938</td>
-<td>15.7307</td>
-<td>4.9568</td>
-<td>8.3669</td>
-</tr>
-<tr>
-<td>21.5051</td>
-<td>24.0909</td>
-<td>15.2548</td>
-<td>27.2111</td>
-<td>6.207</td>
-<td>5.1442</td>
-<td>49.243</td>
-<td>16.7044</td>
-</tr>
-<tr>
-<td>17.1168</td>
-<td>20.0354</td>
-<td>34.1688</td>
-<td>22.7571</td>
-<td>9.4402</td>
-<td>3.92</td>
-<td>11.5812</td>
-<td>14.5677</td>
-</tr>
-<tr>
-<td>52.1181</td>
-<td>0.4088</td>
-<td>9.5559</td>
-<td>11.4219</td>
-<td>24.4509</td>
-<td>6.5634</td>
-<td>26.7213</td>
-<td>28.5667</td>
-</tr>
-<tr>
-<td>37.5848</td>
-<td>16.8474</td>
-<td>35.6619</td>
-<td>9.9333</td>
-<td>24.4654</td>
-<td>3.1644</td>
-<td>0.7775</td>
-<td>6.9576</td>
-</tr>
-<tr>
-<td>14.4703</td>
-<td>13.6368</td>
-<td>19.866</td>
-<td>15.1224</td>
-<td>3.1616</td>
-<td>4.2428</td>
-<td>18.5245</td>
-<td>14.3598</td>
-</tr>
-<tr>
-<td>58.6849</td>
-<td>27.1485</td>
-<td>39.5168</td>
-<td>16.9371</td>
-<td>56.5089</td>
-<td>13.709</td>
-<td>52.5211</td>
-<td>15.7957</td>
-</tr>
-<tr>
-<td>38.43</td>
-<td>8.4648</td>
-<td>51.8181</td>
-<td>23.0159</td>
-<td>8.9983</td>
-<td>23.644</td>
-<td>50.1156</td>
-<td>23.7816</td>
-</tr>
-<tr>
-<td>13.7909</td>
-<td>1.951</td>
-<td>34.0574</td>
-<td>23.396</td>
-<td>23.0624</td>
-<td>8.4319</td>
-<td>19.9857</td>
-<td>5.7902</td>
-</tr>
-<tr>
-<td>40.8801</td>
-<td>14.2978</td>
-<td>58.8289</td>
-<td>14.5229</td>
-<td>18.6635</td>
-<td>6.7436</td>
-<td>52.8423</td>
-<td>27.288</td>
-</tr>
-<tr>
-<td>39.9494</td>
-<td>29.5114</td>
-<td>47.5099</td>
-<td>24.0664</td>
-<td>10.1121</td>
-<td>27.2662</td>
-<td>28.7812</td>
-<td>27.6659</td>
-</tr>
-<tr>
-<td>8.0831</td>
-<td>27.6705</td>
-<td>9.1556</td>
-<td>14.1304</td>
-<td>53.7989</td>
-<td>0.2199</td>
-<td>33.649</td>
-<td>0.398</td>
-</tr>
-<tr>
-<td>1.3496</td>
-<td>16.8359</td>
-<td>49.9816</td>
-<td>6.0828</td>
-<td>19.3635</td>
-<td>17.6622</td>
-<td>36.9545</td>
-<td>23.0265</td>
-</tr>
-<tr>
-<td>15.732</td>
-<td>19.5697</td>
-<td>11.5118</td>
-<td>17.3884</td>
-<td>44.0398</td>
-<td>16.2635</td>
-<td>39.7139</td>
-<td>28.4203</td>
-</tr>
-<tr>
-<td>6.9909</td>
-<td>23.1804</td>
-<td>38.3392</td>
-<td>19.995</td>
-<td>24.6543</td>
-<td>19.6057</td>
-<td>36.998</td>
-<td>24.3992</td>
-</tr>
-<tr>
-<td>4.1591</td>
-<td>3.1853</td>
-<td>40.14</td>
-<td>20.303</td>
-<td>23.9876</td>
-<td>9.403</td>
-<td>41.1084</td>
-<td>27.7149</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-          
+          <p>关于模拟退火算法的一点笔记，含Matlab代码。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/tanyingkongxin.github.io/2019/08/02/模拟退火算法/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
         
       
     </div>
 
     
-
-    
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://tanyingkongxin.github.io/tanyingkongxin.github.io/2019/08/02/My-first-article/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/tanyingkongxin.github.io/images/avatar.jpg">
       <meta itemprop="name" content="Wangxr">
       <meta itemprop="description" content="Nice to meet you!">
-      <meta itemprop="image" content="/tanyingkongxin.github.io/images/NiceToMeetYou.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="_(:з」∠)_">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/tanyingkongxin.github.io/2019/08/02/My-first-article/" class="post-title-link" itemprop="url">My first article</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/tanyingkongxin.github.io/2019/08/02/My-first-article/" class="post-title-link" itemprop="url">Hexo 小备忘录</a>
+        </h1>
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-08-02 00:00:00 / 修改时间：23:11:20" itemprop="dateCreated datePublished" datetime="2019-08-02T00:00:00+08:00">2019-08-02</time>
+              <time title="创建时间：2019-08-02 00:00:00" itemprop="dateCreated datePublished" datetime="2019-08-02T00:00:00+08:00">2019-08-02</time>
             </span>
-          
-
-          
-            
-
-            
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-08 21:05:01" itemprop="dateModified" datetime="2019-11-08T21:05:01+08:00">2019-11-08</time>
+              </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -909,198 +372,65 @@ p = \left\{
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h1 id="Hexo-使用经验"><a href="#Hexo-使用经验" class="headerlink" title="Hexo 使用经验"></a>Hexo 使用经验</h1><h3 id="添加标签页面"><a href="#添加标签页面" class="headerlink" title="添加标签页面"></a>添加标签页面</h3><p>输入下面命令，新建一个“标签”页面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
-<p>然后打开主题文件夹下（我的是next）的 _config.yml 文件,查找“menu”。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home</span><br><span class="line">  #about: /about/ || user</span><br><span class="line">  #tags: /tags/ || tags</span><br><span class="line">  #categories: /categories/ || th</span><br><span class="line">  archives: /archives/ || archive</span><br><span class="line">  #schedule: /schedule/ || calendar</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap</span><br><span class="line">  #commonweal: /404/ || heartbeat</span><br></pre></td></tr></table></figure>
-<p>代码取消注释（即删去”#”），即可在增加菜单<br>底下代码是一篇包含 标签 文章的例子：</p>
-<p>title: 标签测试<br>tags:</p>
-<ul>
-<li>Testing                   （这个就是文章的标签了）</li>
-<li>Another Tag               （这个就是文章的标签了）</li>
-</ul>
-<h2 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h2><p><strong>创建一篇新文章</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-<p>默认layout = post，可以支持自己定义。<br><strong>layout</strong>: 有post，page，draft三种，不同的类型会保存在不同的文件路径下。</p>
-<p><strong>草稿Drafts</strong><br>保存在 <em>source/_drafts</em> 文件夹，可以用下面publish指令移动draft 到<em>source/_post</em>文件夹下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="发博客"><a href="#发博客" class="headerlink" title="发博客"></a>发博客</h2><p><strong>本地预览博客</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br><span class="line">或者输入</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>之后会告诉你一个本地端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
-<p>在浏览器中输入上述的地址即可预览自己的博客，输入Ctrl + C离开。</p>
-<p><strong>博客部署到github</strong></p>
-<p>在 Git Shell 中进入 Hexo 文件夹，执行下面几条命令，将博客部署到 GitHub 上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-<h1 id="Next-主题"><a href="#Next-主题" class="headerlink" title="Next 主题"></a>Next 主题</h1><p>参考来源: <a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">NexT帮助文档</a><br><strong>站点配置文件</strong>指的是站点根目录下的_config.yml文件，而<strong>主题配置文件</strong>则位于next文件夹下，由主题作者提供，主要用于配置主题相关的选项。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<h2 id="启动主题"><a href="#启动主题" class="headerlink" title="启动主题"></a>启动主题</h2><p>要修改<strong>站点配置文件</strong>_config.yml，设置默认主题为next<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line">## Plugins: https://hexo.io/plugins/</span><br><span class="line">## Themes: https://hexo.io/themes/</span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure></p>
-<p>在切换主题之后，最好使用<em>hexo clean</em> 来清楚Hexo的缓存。</p>
-<h2 id="主题设定"><a href="#主题设定" class="headerlink" title="主题设定"></a>主题设定</h2><p><strong>选择Scheme</strong></p>
-<blockquote>
-<p>Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。同时，几乎所有的配置都可以 在 Scheme 之间共用。目前 NexT 支持三种 Scheme，他们是：</p>
-<ul>
-<li>Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白</li>
-<li>Mist - Muse 的紧凑版本，整洁有序的单栏外观</li>
-<li>Pisces - 双栏 Scheme，小家碧玉似的清新</li>
-</ul>
-<p>Scheme 的切换通过更改<strong>主题配置文件</strong>，搜索 scheme 关键字。 你会看到有四行 scheme 的配置，将你需用启用的 scheme 前面注释 # 去除即可。</p>
-</blockquote>
-<p><strong>设置语言</strong><br>编辑<strong>站点配置文件</strong>，修改配置为language: zh-Hans，即可选择简体中文。</p>
-<p><strong>设置菜单</strong></p>
-<p>…</p>
-<h3 id="文章显示数学公式"><a href="#文章显示数学公式" class="headerlink" title="文章显示数学公式"></a>文章显示数学公式</h3><h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>更换 Hexo 的 markdown 渲染引擎，hexo-renderer-kramed 引擎是在默认的渲染引擎 hexo-renderer-marked 的基础上修改了一些 bug ，两者比较接近，也比较轻量级。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">uninstall</span> hexo-renderer-marked <span class="comment">--save</span></span><br><span class="line">npm <span class="keyword">install</span> hexo-renderer-kramed <span class="comment">--save1212</span></span><br></pre></td></tr></table></figure>
-<p>执行上面的命令即可，先卸载原来的渲染引擎，再安装新的。<br>然后，跟换引擎后行间公式可以正确渲染了，但是这样还没有完全解决问题，行内公式的渲染还是有问题，因为 hexo-renderer-kramed 引擎也有语义冲突的问题。接下来到博客根目录下，找到node_modules\kramed\lib\rules\inline.js，把第11行的 escape 变量的值做相应的修改：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//escape: /^\\([<span class="string">\\`*&#123;&#125;\[\</span>](<span class="link"></span>)#$+\-.!_&gt;])/,</span><br><span class="line">escape: /^\\([<span class="string">`*\[\</span>](<span class="link"></span>)#$+\-.!_&gt;])/,1212</span><br></pre></td></tr></table></figure>
-<p>这一步是在原基础上取消了对\,{,}的转义(escape)。<br>同时把第20行的em变量也要做相应的修改。</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//em: /^\b<span class="emphasis">_((?:_</span><span class="emphasis">_|[\s\S])+?)_</span>\b|^\<span class="emphasis">*((?:\*</span>\<span class="emphasis">*|[\s\S])+?)\*</span>(?!\*)/,</span><br><span class="line">em: /^\<span class="emphasis">*((?:\*</span>\<span class="emphasis">*|[\s\S])+?)\*</span>(?!\*)/,1212</span><br></pre></td></tr></table></figure>
-<p>重新启动hexo（先clean再generate）,问题完美解决。哦，如果不幸还没解决的话，看看是不是还需要在使用的主题中配置mathjax开关。</p>
-<h5 id="在-Next-主题中开启-MathJax-开关"><a href="#在-Next-主题中开启-MathJax-开关" class="headerlink" title="在 Next 主题中开启 MathJax 开关"></a>在 Next 主题中开启 MathJax 开关</h5><p>如何使用了主题了，别忘了在主题（Theme）中开启 MathJax 开关，下面以 next 主题为例，介绍下如何打开 MathJax 开关。</p>
-<p>进入到主题目录，找到 _config.yml 配置问题，把 math 默认的 false 修改为true，具体如下：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Math Equations Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Default(true) will load mathjax/katex script on demand</span></span><br><span class="line">  <span class="comment"># That is it only render those page who has 'mathjax: true' in Front Matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax/katex srcipt EVERY PAGE.</span></span><br><span class="line"><span class="attr">  per_page:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  engine:</span> <span class="string">mathjax</span></span><br><span class="line">  <span class="comment">#engine: katex12345678910111234567891011</span></span><br></pre></td></tr></table></figure>
-<p>还需要在文章的Front-matter里打开mathjax开关，如下：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">index.html</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="bullet">-07</span><span class="bullet">-05</span> <span class="number">12</span><span class="string">:01:30</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">-123456123456</span></span><br></pre></td></tr></table></figure>
-<p>之所以要在文章头里设置开关，是因为考虑只有在用到公式的页面才加载 Mathjax，这样不需要渲染数学公式的页面的访问速度就不会受到影响了。</p>
-<p><strong>Thank you for your reading!</strong> </p>
-
-          
+          <p>简单记录Hexo的使用经验。</p>
+<p>自己写的第一篇博客，仅作小试。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/tanyingkongxin.github.io/2019/08/02/My-first-article/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
         
       
     </div>
 
     
-
-    
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://tanyingkongxin.github.io/tanyingkongxin.github.io/2019/07/19/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/tanyingkongxin.github.io/images/avatar.jpg">
       <meta itemprop="name" content="Wangxr">
       <meta itemprop="description" content="Nice to meet you!">
-      <meta itemprop="image" content="/tanyingkongxin.github.io/images/NiceToMeetYou.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="_(:з」∠)_">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/tanyingkongxin.github.io/2019/07/19/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/tanyingkongxin.github.io/2019/07/19/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+        </h1>
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2019-07-19 23:04:40" itemprop="dateCreated datePublished" datetime="2019-07-19T23:04:40+08:00">2019-07-19</time>
             </span>
-          
-
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -1108,12 +438,7 @@ p = \left\{
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
@@ -1123,181 +448,121 @@ p = \left\{
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
-          
-        
       
     </div>
 
     
-
-    
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
-  </section>
+  </div>
 
   
+
 
 
           </div>
           
 
         </div>
-        
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-      
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  
-    <img class="site-author-image" itemprop="image" src="/tanyingkongxin.github.io/images/NiceToMeetYou.jpg" alt="Wangxr">
-  
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Wangxr"
+    src="/tanyingkongxin.github.io/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">Wangxr</p>
-  <div class="site-description motion-element" itemprop="description">Nice to meet you!</div>
+  <div class="site-description" itemprop="description">Nice to meet you!</div>
 </div>
-
-
-  <nav class="site-state motion-element">
-    
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/tanyingkongxin.github.io/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-
-    
-
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/tanyingkongxin.github.io/tags/">
           
-        
-        
-        
-          
-        
-          
-        
         <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
-    
   </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/tanyingkongxin.github.io/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-          
-          
-        </div>
       </div>
-
-      
-
-      
 
     </div>
   </aside>
   <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Wangxr</span>
-
-  
-
-  
 </div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
-
-
-
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.2.0</div>
-
-
-
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  </div>
 
         
+
+
+
+
 
 
 
@@ -1309,37 +574,20 @@ p = \left\{
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
   </div>
 
   
-
-<script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
   
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/tanyingkongxin.github.io/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/tanyingkongxin.github.io/lib/anime.min.js"></script>
+  <script src="/tanyingkongxin.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/tanyingkongxin.github.io/lib/velocity/velocity.ui.min.js"></script>
+<script src="/tanyingkongxin.github.io/js/utils.js"></script><script src="/tanyingkongxin.github.io/js/motion.js"></script>
+<script src="/tanyingkongxin.github.io/js/schemes/pisces.js"></script>
+<script src="/tanyingkongxin.github.io/js/next-boot.js"></script>
+
+
+
   
 
 
@@ -1354,79 +602,14 @@ p = \left\{
 
 
 
-  
-  <script src="/tanyingkongxin.github.io/lib/jquery/index.js?v=3.4.1"></script>
-
-  
-  <script src="/tanyingkongxin.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/tanyingkongxin.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-
-
-  <script src="/tanyingkongxin.github.io/js/utils.js?v=7.2.0"></script>
-
-  <script src="/tanyingkongxin.github.io/js/motion.js?v=7.2.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/tanyingkongxin.github.io/js/affix.js?v=7.2.0"></script>
-
-  <script src="/tanyingkongxin.github.io/js/schemes/pisces.js?v=7.2.0"></script>
-
-
-
-  
-
-  <script src="/tanyingkongxin.github.io/js/next-boot.js?v=7.2.0"></script>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-  
-
 
 
 
   
 
   
-
-  
-  
-
-  
-  
-    
       
-        
-      
-    
-      
-    
-      
-    
-  
-
-  
-    
-      <script type="text/x-mathjax-config">
-  
+<script type="text/x-mathjax-config">
 
   MathJax.Hub.Config({
     tex2jax: {
@@ -1435,57 +618,44 @@ p = \left\{
       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
     },
     TeX: {
-      
       equationNumbers: {
         autoNumber: 'AMS'
       }
     }
   });
+
   MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
     MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
       if (data.display) {
         var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
-        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
       }
     });
   });
-</script>
 
-<script type="text/x-mathjax-config">
   MathJax.Hub.Queue(function() {
     var all = MathJax.Hub.getAllJax(), i;
     for (i = 0; i < all.length; i += 1) {
-      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
     }
   });
 </script>
-<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
 
     
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
 
   
 

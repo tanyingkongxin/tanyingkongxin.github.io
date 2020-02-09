@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/tanyingkongxin.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/tanyingkongxin.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/tanyingkongxin.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/tanyingkongxin.github.io/images/logo.svg" color="#222">
+  <link rel="alternate" href="/tanyingkongxin.github.io/atom.xml" title="_(:з」∠)_" type="application/atom+xml">
+
+<link rel="stylesheet" href="/tanyingkongxin.github.io/css/main.css">
+
+
+<link rel="stylesheet" href="/tanyingkongxin.github.io/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/tanyingkongxin.github.io/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="问题描述人脸识别简单来说就是给定一张人脸图像，识别出图像中的脸是谁的脸。在这篇文章中我们稍微具体化问题：给定已有数据库的人脸图像，并给出一张新的测试图像，要求能识别出测试图像的人脸是数据库中哪个个体的。 人脸识别在现实世界中进行人脸识别，我们会遇到不小的挑战。因为人脸数据其实多种多样，同一个人的人脸图像可以有头部姿势、表情、装饰的遮掩（眼睛，帽子…）、光照环境甚至是年龄健康状况等。所以我们直接把测">
+<meta name="keywords" content="algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于PCA的人脸识别">
+<meta property="og:url" content="http://tanyingkongxin.github.io/2020/02/09/基于PCA的人脸识别/index.html">
+<meta property="og:site_name" content="_(:з」∠)_">
+<meta property="og:description" content="问题描述人脸识别简单来说就是给定一张人脸图像，识别出图像中的脸是谁的脸。在这篇文章中我们稍微具体化问题：给定已有数据库的人脸图像，并给出一张新的测试图像，要求能识别出测试图像的人脸是数据库中哪个个体的。 人脸识别在现实世界中进行人脸识别，我们会遇到不小的挑战。因为人脸数据其实多种多样，同一个人的人脸图像可以有头部姿势、表情、装饰的遮掩（眼睛，帽子…）、光照环境甚至是年龄健康状况等。所以我们直接把测">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://tanyingkongxin.github.io/tanyingkongxin.github.io/.io//pca.png">
+<meta property="og:image" content="http://tanyingkongxin.github.io/tanyingkongxin.github.io/.io//result.png">
+<meta property="og:updated_time" content="2020-02-09T08:13:24.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于PCA的人脸识别">
+<meta name="twitter:description" content="问题描述人脸识别简单来说就是给定一张人脸图像，识别出图像中的脸是谁的脸。在这篇文章中我们稍微具体化问题：给定已有数据库的人脸图像，并给出一张新的测试图像，要求能识别出测试图像的人脸是数据库中哪个个体的。 人脸识别在现实世界中进行人脸识别，我们会遇到不小的挑战。因为人脸数据其实多种多样，同一个人的人脸图像可以有头部姿势、表情、装饰的遮掩（眼睛，帽子…）、光照环境甚至是年龄健康状况等。所以我们直接把测">
+<meta name="twitter:image" content="http://tanyingkongxin.github.io/tanyingkongxin.github.io/.io//pca.png">
+
+<link rel="canonical" href="http://tanyingkongxin.github.io/2020/02/09/基于PCA的人脸识别/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>基于PCA的人脸识别 | _(:з」∠)_</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/tanyingkongxin.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">_(:з」∠)_</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/tanyingkongxin.github.io/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tanyingkongxin.github.io/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/tanyingkongxin.github.io/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/tanyingkongxin.github.io/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://tanyingkongxin.github.io/tanyingkongxin.github.io/2020/02/09/基于PCA的人脸识别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/tanyingkongxin.github.io/images/avatar.jpg">
+      <meta itemprop="name" content="Wangxr">
+      <meta itemprop="description" content="Nice to meet you!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="_(:з」∠)_">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于PCA的人脸识别
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-09 15:56:03 / 修改时间：16:13:24" itemprop="dateCreated datePublished" datetime="2020-02-09T15:56:03+08:00">2020-02-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>人脸识别简单来说就是给定一张人脸图像，识别出图像中的脸是谁的脸。在这篇文章中我们稍微具体化问题：给定已有数据库的人脸图像，并给出一张新的测试图像，要求能识别出测试图像的人脸是数据库中哪个个体的。</p>
+<h1 id="人脸识别"><a href="#人脸识别" class="headerlink" title="人脸识别"></a>人脸识别</h1><p>在现实世界中进行人脸识别，我们会遇到不小的挑战。因为人脸数据其实多种多样，同一个人的人脸图像可以有头部姿势、表情、装饰的遮掩（眼睛，帽子…）、光照环境甚至是年龄健康状况等。所以我们直接把测试图像和数据库中的每一个图像来比较每一个像素，选出均方误差最小的那一张图像，其实是很不现实的。思考一下，我们人是如何识别人脸的。我想，在我们看到一张人脸的时候，目光会锁定那些典型的生物特征（眼睛、鼻子、头发…），然后大脑会快速在记忆的数据库中检索，寻找出匹配度最高的人脸图像，由此识别出人脸。所以<strong>根据人脸的生物特征</strong>，是人脸识别的一个思路。当然我们很容易想到这种方法的一个缺点——鲁棒性不够，这种方法需要在图像中识别出人的眼睛、耳朵等的位置范围，比较依赖特定的图像，在人脸发生变化时这种方法的效果会明显下降。</p>
+<p>因此这里介绍另外一种思路：<strong>利用统计学方法在整体上提取特征</strong>。PCA算法主要选取特征值（eigenvalue）作为特征。这种基于特征值的人脸识别方法也被称为特征脸（Eigenface）。</p>
+<p>（相信大家在线性代数等课程中有学过特征值、特征向量，如果忘记特征值的概念，建议百度迅速补充一下基础知识: )</p>
+<a id="more"></a>
+<h1 id="PCA"><a href="#PCA" class="headerlink" title="PCA"></a>PCA</h1><p>PCA (Principal Components Analysis)，主成分分析法。下面介绍PCA方法的思路：</p>
+<p>对于每一张人脸图像，假设其为m×n像素的大小，可以看做一个m行n列的矩阵。我们可以按照列向量的方向排列，把矩阵转为一个长度为m×n的向量。直接把向量的每个维度当成一个特征，你会发现特征数特别特别多，通常来说对于一张图像其维度至少250000  ，有的图像的维度更高，直接处理的算法复杂度太高了。因此我们使用PCA，对高纬度的数据集合进行<strong>数据降维</strong>，转换为只需要较少的几个维数来表示数据，这样就可以用较小的存储代价和计算复杂度获得较高的准确率。</p>
+<p>先介绍一下PCA算法的流程：</p>
+<ul>
+<li><p>假设有$N$张训练图像，计算训练图像的均值</p>
+<script type="math/tex; mode=display">
+\overline x = \frac 1N\sum_{i=1}^Nx_i,\quad x_i\in R^d</script></li>
+<li><p>每张原图像减去均值</p>
+<script type="math/tex; mode=display">
+\overline x_i = x_i - \overline x</script></li>
+<li><p>计算$\overline x_i$的协方差矩阵$C$</p>
+<script type="math/tex; mode=display">
+C = \frac 1{N-1}\sum_{i=1}^N\overline x_i\overline x_i^T = \frac 1{N-1} \sum_{i=1}^N(x_i-\overline x)(x_i-\overline x)^T \quad C\in R^{d×d}</script></li>
+<li><p>求解C的特征向量（C是方阵，故这里使用特征值分解，如果是非方阵使用奇异值分解）</p>
+<script type="math/tex; mode=display">
+CV = V\Lambda, \quad V\in R^{d×d}, \Lambda \in R^{d×d}</script><p>其中$V$是特征向量矩阵，$\Lambda$是特征值组成的矩阵</p>
+</li>
+<li><p>提取出k个对应特征值最大的特征向量(先把V的每个列向量从大到小排序)</p>
+<script type="math/tex; mode=display">
+\hat V_k = V(:, 1:k)</script></li>
+<li><p>将每个图像投影在上一步提取的k个特征向量上，得到k个特征系数</p>
+<script type="math/tex; mode=display">
+\alpha_{ik} = \hat V_k^T \overline x_i</script><p>所以原来用d个特征来表示一张图像，现在就可以用k个特征系数来表示了。</p>
+</li>
+</ul>
+<h1 id="PCA原理的一点理解"><a href="#PCA原理的一点理解" class="headerlink" title="PCA原理的一点理解"></a>PCA原理的一点理解</h1><p>如果你之前对PCA算法已经有所了解，可以跳过这一部分看下一部分。</p>
+<p>看完了上面对于PCA算法的介绍，可能大家会有些疑惑，为什么可以只取前K个特征值对应的特征向量就足够了。这里简单解释一下。</p>
+<p>下图中的每一个蓝点表示一个二维数据，用坐标为(x, y)的点表示数据(x, y)。PCA算法的原理就是变换点的坐标系，下图经过PCA算法之后坐标轴变为蓝线和红线。其中蓝线是所有数据点方差最大的方向（图中你可以看到数据点基本沿蓝线呈扁平分布）。而所以我们可以只考虑点在蓝色坐标轴上的值来表示每个点。这样原来用两个维度表示，现在只需要用一个维度来表示，而且丢失的信息比较少（因为沿红色坐标轴的方向各个点的取值差别不大）。</p>
+<p><img src="/tanyingkongxin.github.io/.io//pca.png" alt></p>
+<p>类似地，如果数据有N个维度，经过PCA变换来变换每一个数据表示的N个维度，按照特征值由大到小排序对应的特征向量，第一个特征向量对应的特征值最大，其表示沿着该方向所有数据项的方差最大，第二个特征向量表示沿该方向数据的方差第二大，依此类推。所以我们选择前k个(k&lt;N)特征向量来表示原来的数据项，能够保证数据之间的方差依旧足够大，故损失的信息较少。</p>
+<h1 id="PCA算法改进"><a href="#PCA算法改进" class="headerlink" title="PCA算法改进"></a>PCA算法改进</h1><p>上一部分介绍的PCA算法确实能有效地数据降维，但是该算法有一个严重缺陷——时空复杂度高。首先在计算过程中我们需要保存d×d的协方差矩阵$C$；其次，对于$C$的特征向量的求解的算法复杂度是$O(d^3)$，d通常很大，所以计算起来耗时很长。所以下面介绍对PCA算法进行改进。</p>
+<p>假设我们有N张训练图像，每张图像像素为m×n，则表示成向量时的维度d = m×n。在人脸识别的应用场景中，通常来说N远远小于d。本次实验也满足N远远小于d（$N\ll d$）。而上述算法中的协方差矩阵C​的秩(rank)至多为N-1，所以C至多有N-1个非0的特征值。我们可以用下面方法来表示C</p>
+<script type="math/tex; mode=display">
+C = \frac1{N-1}\sum_{i=1}^N\overline x_i \overline x_i^T \propto XX^T \\
+其中\quad X = [\overline x_1|\overline x_2|...|\overline x_N]\in R^{d×N}</script><p>另外我们先考虑$X^TX$的特征值$\lambda$和特征向量$w$</p>
+<script type="math/tex; mode=display">
+X^TXw= \lambda w, w\in R^N \\
+等式左右都左乘X有 \quad XX^T(Xw) = \lambda(Xw)</script><p>由特征向量的定义，$Xw$是$XX^T$的特征向量。</p>
+<p>上述的推导过程我们可以得到结论：如果$w$是$X^TX$的特征向量，则$Xw$是$XX^T$的特征向量。所以原来我们直接求协方差矩阵C的特征向量的算法复杂度为$O(d^3)$，现在我们只需要求$X^TX$的特征向量$w$（复杂度为$O(N^3)$），然后对于每一个特征向量$w$再计算$Xw$（复杂度为$O(N×dN)$），所以总的复杂度为$O(N^3+dN^2)$，在$N\ll d$时，复杂度相比原来的$O(d^3)$得到了很好的下降。</p>
+<p><strong>经过改进后的PCA算法如下</strong></p>
+<ul>
+<li><p>假设有N张训练图像，计算图像的均值</p>
+<script type="math/tex; mode=display">
+\overline x = \frac 1N\sum_{i=1}^Nx_i,\quad x_i\in R^d</script></li>
+<li><p>每张原图像减去均值</p>
+<script type="math/tex; mode=display">
+\overline x_i = x_i - \overline x</script></li>
+<li><p>计算下面矩阵L（下面X的表示为每个图像对应的列向量$\overline{x_i}$排列组成矩阵X）</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+X = [\overline x_1|\overline x_2|...|\overline x_N] \in R^{d×N} \\ L = X^TX</script><ul>
+<li><p>求解L的特征向量</p>
+<script type="math/tex; mode=display">
+LW = W\Lambda</script><p>其中W是特征向量组成矩阵，$\Lambda$是特征值组成矩阵；</p>
+</li>
+<li><p>获得协方差矩阵C的特征向量V</p>
+<script type="math/tex; mode=display">
+V = \frac 1{N-1}XW \quad N是训练图像的数量，N\in R,</script></li>
+<li><p>提取出k个对应特征值最大的特征向量(此处$k \le N$；先把V的每个列向量从大到小排序)</p>
+<script type="math/tex; mode=display">
+\hat V_k = V(:, 1:k)</script></li>
+<li><p>将每个图像投影在上一步提取的k个特征向量上，得到k个特征系数</p>
+<script type="math/tex; mode=display">
+\alpha_{ik} = \hat V_k^T \overline x_i</script></li>
+</ul>
+<h1 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h1><p>我们把预测时参考的人脸图像称为gallery image，每一张gallery image记录下它的主人id。</p>
+<p>预测的算法如下：</p>
+<ul>
+<li><p>对于每张gallery image，经过PCA算法计算得到特征系数$\alpha_{ik}$，保存下来。同样PCA算法得到的特征向量$\hat V_k$和图像均值$\overline x$也保存。</p>
+</li>
+<li><p>每一张测试图像$z_p$，先减去均值图像，即$\overline z_p = z_p-\overline x$；</p>
+</li>
+<li><p>然后再投影到k个特征向量上，得到特征系数$\alpha_p$</p>
+<script type="math/tex; mode=display">
+\alpha_p=\hat V_k^T \overline z_p</script></li>
+<li><p>比较$\alpha_p$和每一个gallery image的特征系数$\alpha_{ik}$，使用均方距离（2范数）找出<strong>与预测图像距离最近</strong>的gallery image，其标签（即人脸的主人）即为预测图像的标签。</p>
+<script type="math/tex; mode=display">
+i_p = \arg \min_i ||\alpha_p - \alpha_{ik}||^2_2</script></li>
+</ul>
+<h1 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h1><p>将k从5递增到200，每次增加5，计算不同k值对应的准确率。</p>
+<p>在k=20时，准确率有80.5%，之后k增大准确率基本不变；在k = 65时，就能达到81%的准确率，这是能达到的最大准确率了，下图是一次运行的结果。</p>
+<p>ps:由于随机选择每个人的5张图来训练，5张图来测试，所以多次运行程序结果可能不同，但结果的偏差不大，平均能有78%。</p>
+<p><img src="/tanyingkongxin.github.io/.io//result.png" alt></p>
+<p>分析可得，由ORL人脸数据库我们可以得到已经对人脸图像进行了裁剪、对齐、光照统一等处理得到的优质数据，使用基于PCA的人脸识别算法效果良好，使用的的特征只需要大概65个，就能达到78%左右的准确率。</p>
+<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>下面为自己写的代码，如果错漏，欢迎反馈。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%% pca.m</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[img_new, img_mean, V]</span> = <span class="title">pca</span><span class="params">(img, k)</span></span></span><br><span class="line"><span class="comment">% Input</span></span><br><span class="line">    <span class="comment">%   img, 训练图像数据</span></span><br><span class="line">    <span class="comment">%   k，特征维数</span></span><br><span class="line"><span class="comment">% Output</span></span><br><span class="line">    <span class="comment">%   img_new 经过变换后的图像矩阵</span></span><br><span class="line">    <span class="comment">%   img_mean 图像平均值</span></span><br><span class="line">    <span class="comment">%   V 特征值</span></span><br><span class="line">[N, d] = <span class="built_in">size</span>(img);</span><br><span class="line">img_mean = <span class="built_in">mean</span>(img, <span class="number">1</span>);</span><br><span class="line">X = (img - <span class="built_in">repmat</span>(img_mean, N, <span class="number">1</span>))'; <span class="comment">% d * N</span></span><br><span class="line">L = X'*X; <span class="comment">% N * N</span></span><br><span class="line">[W, Value] = eig(L);</span><br><span class="line"><span class="comment">% diag(Value)  % 输出所有特征之后发现，特征值是从小到大排列，所以下面提取特征向量是倒着提取的</span></span><br><span class="line">eig_vector = X * W./(N<span class="number">-1</span>);</span><br><span class="line"><span class="keyword">if</span> k &lt; N</span><br><span class="line">    V = eig_vector(:, N-k+<span class="number">1</span>:N); <span class="comment">% d * k, 这里k &lt; N</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    V = eig_vector;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">img_new = (img - <span class="built_in">repmat</span>(img_mean, N, <span class="number">1</span>)) * V; <span class="comment">% (N, d) * (d, k)</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%% predict.m</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">acc</span> = <span class="title">predict</span><span class="params">(V, face_test_data, std_img, img_mean)</span></span></span><br><span class="line"><span class="comment">% Input:</span></span><br><span class="line">    <span class="comment">% V 特征向量</span></span><br><span class="line">    <span class="comment">% face_test_data 测试数据集</span></span><br><span class="line">    <span class="comment">% std_img 经过 PCA处理后的训练图像</span></span><br><span class="line">    <span class="comment">% img_mean 训练集图像的平均值</span></span><br><span class="line"><span class="comment">% Output: accuracy 准确率</span></span><br><span class="line">    acc = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> u=<span class="number">1</span>:<span class="number">40</span>*<span class="number">5</span></span><br><span class="line">        test_img = face_test_data(u, :) - img_mean;</span><br><span class="line">        eig_img = test_img * V;</span><br><span class="line">        dis = <span class="built_in">zeros</span>(<span class="number">40</span>,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> v = <span class="number">1</span>:<span class="number">40</span></span><br><span class="line">            dis(v, <span class="number">1</span>) = norm(eig_img - std_img(v, :));</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        [min_val, min_index] = <span class="built_in">min</span>(dis);</span><br><span class="line">    <span class="comment">%     fprintf('predict: %d, truth: %d\n',min_index, ceil(u/5));</span></span><br><span class="line">        <span class="keyword">if</span> min_index == <span class="built_in">ceil</span>(u/<span class="number">5</span>)</span><br><span class="line">            acc = acc + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="comment">%     fprintf('The accuracy: %f\n', acc/200);</span></span><br><span class="line">    acc = acc / <span class="number">200</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%% faceRecognition.m</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 加载ORL人脸数据</span></span><br><span class="line">tic <span class="comment">%计算程序运行时间</span></span><br><span class="line"></span><br><span class="line">clear,clc;</span><br><span class="line">path = <span class="string">'./data/s'</span>;</span><br><span class="line">img = imread(strcat(path,<span class="string">'1_1.bmp'</span>)); <span class="comment">% 为计算尺寸先读入一张</span></span><br><span class="line">[img_row, img_col] = <span class="built_in">size</span>(img);</span><br><span class="line">fprintf(<span class="string">'row = %d , col = %d\n'</span>, img_row, img_col);</span><br><span class="line"></span><br><span class="line">face_test_data = <span class="built_in">zeros</span>(<span class="number">40</span>*<span class="number">5</span>, img_row*img_col); <span class="comment">% 测试数据</span></span><br><span class="line">face_train_data = <span class="built_in">zeros</span>(<span class="number">40</span>*<span class="number">5</span>, img_row*img_col); <span class="comment">% 训练数据</span></span><br><span class="line"><span class="keyword">for</span> u=<span class="number">1</span>:<span class="number">40</span>  </span><br><span class="line">    rand_num = randperm(<span class="number">10</span>); <span class="comment">% 打散每个人的10张照片</span></span><br><span class="line">    <span class="keyword">for</span> v = <span class="number">1</span>:<span class="number">5</span></span><br><span class="line">        img_path = strcat(path,int2str(u),<span class="string">'_'</span>,int2str(rand_num(v)),<span class="string">'.bmp'</span>);</span><br><span class="line">        img = imread(img_path);</span><br><span class="line">        face_train_data((u<span class="number">-1</span>)*<span class="number">5</span>+v, :) = img(:);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> v = <span class="number">1</span>:<span class="number">5</span></span><br><span class="line">        img_path = strcat(path,int2str(u),<span class="string">'_'</span>,int2str(rand_num(v+<span class="number">5</span>)),<span class="string">'.bmp'</span>);</span><br><span class="line">        img = imread(img_path);</span><br><span class="line">        face_test_data((u<span class="number">-1</span>)*<span class="number">5</span>+v, :) = img(:);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 尝试k不同取值的预测准确率</span></span><br><span class="line">acc = <span class="built_in">zeros</span>(<span class="number">40</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> k = <span class="number">5</span>:<span class="number">5</span>:<span class="number">200</span></span><br><span class="line">    [img_new, img_mean, V] = pca(face_train_data, k); <span class="comment">% PCA变换</span></span><br><span class="line"></span><br><span class="line">    std_img = <span class="built_in">zeros</span>(<span class="number">40</span>, k); <span class="comment">% 将每个人的5张训练图像取均值作为参考图像，方便predict时计算</span></span><br><span class="line">    <span class="keyword">for</span> u = <span class="number">1</span>:<span class="number">40</span></span><br><span class="line">        std_img(u, :) = sum(img_new(<span class="number">5</span>*(u<span class="number">-1</span>)+<span class="number">1</span>:<span class="number">5</span>*u, :),<span class="number">1</span>)./<span class="number">5</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    acc(k/<span class="number">5</span>) = predict(V, face_test_data, std_img, img_mean); <span class="comment">% 预测结果</span></span><br><span class="line">    fprintf(<span class="string">'The accuracy: %f\n'</span>, acc(k/<span class="number">5</span>));</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">plot</span>(<span class="number">5</span>:<span class="number">5</span>:<span class="number">200</span>, acc);</span><br><span class="line"></span><br><span class="line">toc</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tanyingkongxin.github.io/tags/algorithm/" rel="tag"># algorithm</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/tanyingkongxin.github.io/2019/08/02/模拟退火算法/" rel="next" title="模拟退火算法">
+                  <i class="fa fa-chevron-left"></i> 模拟退火算法
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#人脸识别"><span class="nav-number">2.</span> <span class="nav-text">人脸识别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PCA"><span class="nav-number">3.</span> <span class="nav-text">PCA</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PCA原理的一点理解"><span class="nav-number">4.</span> <span class="nav-text">PCA原理的一点理解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PCA算法改进"><span class="nav-number">5.</span> <span class="nav-text">PCA算法改进</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预测"><span class="nav-number">6.</span> <span class="nav-text">预测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验结果"><span class="nav-number">7.</span> <span class="nav-text">实验结果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考代码"><span class="nav-number">8.</span> <span class="nav-text">参考代码</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Wangxr"
+    src="/tanyingkongxin.github.io/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Wangxr</p>
+  <div class="site-description" itemprop="description">Nice to meet you!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/tanyingkongxin.github.io/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tanyingkongxin.github.io/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/tanyingkongxin.github.io/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wangxr</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/tanyingkongxin.github.io/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/tanyingkongxin.github.io/lib/anime.min.js"></script>
+  <script src="/tanyingkongxin.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/tanyingkongxin.github.io/lib/velocity/velocity.ui.min.js"></script>
+<script src="/tanyingkongxin.github.io/js/utils.js"></script><script src="/tanyingkongxin.github.io/js/motion.js"></script>
+<script src="/tanyingkongxin.github.io/js/schemes/pisces.js"></script>
+<script src="/tanyingkongxin.github.io/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+</body>
+</html>
